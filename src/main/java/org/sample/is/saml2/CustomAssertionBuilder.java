@@ -148,13 +148,7 @@ public class CustomAssertionBuilder implements SAMLAssertionBuilder {
             AuthnContextClassRef authCtxClassRef = new AuthnContextClassRefBuilder().buildObject();
             authCtxClassRef.setAuthnContextClassRef(AuthnContext.PASSWORD_AUTHN_CTX);
 
-            log.info(authReqDTO.getUser().getTenantDomain().toString() + " ------authReqDTO.getUser().getTenantDomain()------");
-
-            log.info(
-                    PrivilegedCarbonContext.getThreadLocalCarbonContext().getTenantDomain().toString()
-                    + " -----PrivilegedCarbonContext.getThreadLocalCarbonContext().getTenantDomain()----- ");
-
-
+            //Changing the AuthnContext for testtenant.com
             if (authReqDTO.getUser().getTenantDomain().equalsIgnoreCase("testtenant.com")) {
                 log.info("Setting AuthnContext for "+ authReqDTO.getUser().getTenantDomain().toString() + " to " + AuthnContext.PPT_AUTHN_CTX.toString());
                 authCtxClassRef.setAuthnContextClassRef(AuthnContext.PPT_AUTHN_CTX);
